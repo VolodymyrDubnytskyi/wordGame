@@ -1,0 +1,19 @@
+@import '../../styles/colors.scss';
+
+.custom-input-container {
+    width: 100%;
+    max-width: 350px;
+}
+.custom-input {
+    width: 100%;
+	background-color: transparent;
+	border: 1px solid $secondaryColor;
+	border-radius: 3px;
+    padding: 10px 10px;
+    outline: none;
+    &__error {
+        color: $errorColor;
+        margin-top: 3px;
+        font-size: 14px;
+    }
+}

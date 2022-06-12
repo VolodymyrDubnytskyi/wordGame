@@ -1,0 +1,15 @@
+@import '../../styles/colors.scss';
+
+.custom__btn {
+	padding: 7px 10px;
+	border-radius: 3px;
+	border: 1px solid $primaryColor;
+	background-color: transparent;
+	outline: none;
+	transition: 0.3s;
+    cursor: pointer;
+	&:hover {
+		background-color: $primaryColor;
+		color: #fff;
+	}
+}

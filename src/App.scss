@@ -1,0 +1,12 @@
+@import './components/CustomInput/customInput';
+@import './components/CustomBtn/customBtn';
+@import './components/Loader/loader';
+@import './screens/Auth/auth';
+@import './screens/Game/game';
+@import './screens/GameResult/gameResult';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

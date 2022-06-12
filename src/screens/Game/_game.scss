@@ -1,0 +1,55 @@
+@import '../../styles/mixins';
+@import '../../styles/colors';
+
+.game {
+	@include screenContainer();
+	@include flexCenter(column);
+	&__board {
+		width: 80%;
+		border: 2px solid #000;
+		border-radius: 3px;
+		padding: 30px;
+		margin: 50px 0;
+	}
+	&__words {
+		list-style-type: none;
+		display: grid;
+		gap: 30px;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		&--inactive {
+			pointer-events: none;
+		}
+	}
+	&__word {
+		@include flexCenter(column);
+		height: 40px;
+		cursor: pointer;
+		transition: 0.3s;
+		color: $secondaryColor;
+		&--active {
+			color: #000;
+		}
+		&:hover {
+			color: $primaryColor;
+		}
+	}
+	.word-status {
+		&--success {
+			color: $successColor;
+		}
+		&--err {
+			color: $errorColor;
+		}
+	}
+	.status {
+		font-weight: 600;
+	}
+	.loading-overlay {
+		@include screenContainer();
+		@include flexCenter(row);
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 3;
+	}
+}

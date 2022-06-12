@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback, useEffect, useState } from 'react';
+import './App.scss';
+import Auth from './screens/Auth/Auth';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Game from './screens/Game/Game';
+import GameProvider from './context/gameContext';
+import GameResult from './screens/GameResult/GameResult';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [isAuth, setIsAuth] = useState(true);
+	const [userName, setUserName] = useState('');
+
+	const onUserNameChange = useCallback(
+		(newUserName) => {
+			setUserName(newUserName);
+		},
+		[setUserName],
+	);
+
+	
+	return (
+		<div className='App'>
+			{isAuth ? (
+				<Auth
+					setIsAuth={setIsAuth}
+					onUserNameChange={onUserNameChange}
+				/>
+			) : (
+				<GameProvider userName={userName}>
+					<BrowserRouter>
+						<Routes>
+							<Route path='/' element={<Game />} />
+							<Route
+								path='/gameResult'
+								element={<GameResult />}
+							/>
+						</Routes>
+					</BrowserRouter>
+				</GameProvider>
+			)}
+		</div>
+	);
 }
 
-export default App;
+export default React.memo(App);

@@ -1,0 +1,20 @@
+@import '../../styles/mixins';
+@import '../../styles/colors';
+
+.game-result {
+	@include screenContainer();
+	@include flexCenter(row);
+	&__content-box {
+		text-align: center;
+	}
+	&__heading {
+		font-weight: 600;
+		margin: 10px 0;
+		font-size: 34px;
+	}
+	&__score {
+		font-size: 26px;
+		color: $primaryColor;
+		margin-bottom: 20px;
+	}
+}
